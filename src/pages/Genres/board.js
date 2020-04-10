@@ -114,7 +114,7 @@ export default function MyDraggingBoard() {
         }}
         onMouseDown={startDragging}
       >
-        Tile
+        Tile<a href="#">x</a>
       </div>
       <div
         style={{
@@ -127,6 +127,7 @@ export default function MyDraggingBoard() {
         onMouseDown={startDragging1}
       >
         Tile 1
+        <a href="#">x</a>
       </div>
       <div
         style={{
@@ -139,6 +140,7 @@ export default function MyDraggingBoard() {
         onMouseDown={startDragging2}
       >
         Tile 2
+        <a href="#">x</a>
       </div>
     </div>
   );

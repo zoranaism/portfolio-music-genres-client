@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchGenres } from "../../store/genres/actions";
-// import { selectGenres } from "../../store/genres/selectors";
+import { fetchGenres } from "../../store/genres/actions";
+import { selectGenres } from "../../store/genres/selectors";
 import GenreCard from "../../components/GenreCard";
 import MyDraggingBoard from "./board"
 
@@ -15,13 +15,12 @@ import Link from "@material-ui/core/Link";
 
 export default function Genres() {
   const dispatch = useDispatch();
-  //   const genres = useSelector(selectGenres);
+    const genres = useSelector(selectGenres);
 
-  // console.log("Genres HOME PGAE", typeof genres);
-  // console.log("Genres", genres.bids);
+  console.log("Genres HOME PGAE", genres);
 
   useEffect(() => {
-    // dispatch(fetchGenres());
+    dispatch(fetchGenres());
   }, [dispatch]);
 
   return (

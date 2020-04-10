@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+// import "./styles.css";
+import { Example } from "../src/components/Navigation/Example";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -26,7 +28,8 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation />
+      {/* <Navigation /> */}
+      <Example />
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
