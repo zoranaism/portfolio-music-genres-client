@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import { login } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { Col } from "react-bootstrap";
+
+import {
+  Button,
+  TextField,
+  CssBaseline,
+  Container,
+  Box,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
+
+const theme = {
+  spacing: 8,
+};
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -14,7 +33,7 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
-
+  const classes = useStyles();
   useEffect(() => {
     if (token !== null) {
       history.push("/");
@@ -32,39 +51,71 @@ export default function SignUp() {
   }
 
   return (
-    <Container>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Login</h1>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            value={email}
-            onChange={event => setEmail(event.target.value)}
-            type="email"
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mt-5">
-          <Button variant="primary" type="submit" onClick={submitForm}>
-            Log in
-          </Button>
-        </Form.Group>
-        <Link to="/signup" style={{ textAlign: "center" }}>
-          Click here to sign up
-        </Link>
-      </Form>
-    </Container>
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="xs" style={{ textAlign: "center" }}>
+        <form className={classes.root}>
+          <Box mt={6}>
+            <div
+              style={{
+                backgroundColor: "#a6b3fd",
+                borderRadius: "100%",
+                padding: "7px",
+                width: "40px",
+                margin: "0 auto",
+              }}
+            >
+              <LockOpenIcon />
+            </div>
+          </Box>
+          <Box mb={3}>
+            <h1>Login</h1>
+          </Box>
+          <Box mb={3}>
+            <TextField
+              style={{ width: "100%", margin: "0" }}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              type="email"
+              placeholder="Enter email"
+              required
+              label="Email address"
+              variant="outlined"
+            />
+          </Box>
+          <Box>
+            <TextField
+              style={{ width: "100%", margin: "0" }}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              type="password"
+              placeholder="Password"
+              required
+              label="Password"
+              variant="outlined"
+            />
+          </Box>
+          <Box mt={7} mb={1}>
+            <Button
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained jss4 MuiButton-containedPrimary MuiButton-fullWidth"
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={submitForm}
+            >
+              Log in
+            </Button>
+          </Box>
+          <Box className="MuiGrid-root MuiGrid-item">
+            <Link
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorPrimary"
+              to="/signup"
+            >
+              Don't have an account? Sign Up
+            </Link>
+          </Box>
+        </form>
+      </Container>
+    </React.Fragment>
   );
 }
