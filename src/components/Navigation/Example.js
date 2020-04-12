@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { MenuToggle } from "./MenuToggle";
-import { Navigation } from "./Navigation";
+import Navigation from "./Navigation";
 import "./styles.css";
 
 const backgroundVariants = {

@@ -1,10 +1,11 @@
 import React from "react";
-import NavbarItem from "./NavbarItem";
+import MenuItem from "./MenuItem";
 
 export default function LoggedOut() {
   return (
     <>
-      <NavbarItem path="/login" linkText="Login" />
+      <MenuItem path="/login" linkText="Login" />
+      <MenuItem path="/signup" linkText="SignUp" />
     </>
   );
 }
