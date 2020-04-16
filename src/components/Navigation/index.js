@@ -1,31 +1,28 @@
-// import React from "react";
-// import Navbar from "react-bootstrap/Navbar";
-// import Nav from "react-bootstrap/Nav";
-// import { NavLink } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { selectToken } from "../../store/user/selectors";
-// import NavbarItem from "./NavbarItem";
-// import LoggedIn from "./LoggedIn";
-// import LoggedOut from "./LoggedOut";
+import * as React from "react";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { MenuToggle } from "./MenuToggle";
+import Navigation from "./Navigation";
+import "./styles.css";
 
-// export default function Navigation() {
-//   const token = useSelector(selectToken);
+const backgroundVariants = {
+  open: { opacity: 1, zIndex: 1 },
+  closed: { opacity: 0, zIndex: 0 }
+};
 
-//   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+export const MainNavContainer = () => {
+  const [isOpen, setOpen] = useState(false);
+  const containerRef = useRef(null);
 
-//   return (
-//     <Navbar bg="light" expand="lg">
-//       <Navbar.Brand as={NavLink} to="/">
-//         YOUR PROJECT NAME
-//       </Navbar.Brand>
-//       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//       <Navbar.Collapse id="basic-navbar-nav">
-//         <Nav style={{ width: "100%" }} fill>
-//           <NavbarItem path="/" linkText="Genres" />
-//           <NavbarItem path="/other" linkText="Other" />
-//           {loginLogoutControls}
-//         </Nav>
-//       </Navbar.Collapse>
-//     </Navbar>
-//   );
-// }
+  return (
+    <motion.nav
+      ref={containerRef}
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+    >
+      <motion.div className="background" variants={backgroundVariants} />
+      <Navigation />
+      <MenuToggle toggle={() => setOpen(!isOpen)} />
+    </motion.nav>
+  );
+};
