@@ -6,5 +6,6 @@ import genres from "./genres/reducer";
 export default combineReducers({
   appState,
   user, 
-  genres
+  genres, 
+  
 });

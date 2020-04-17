@@ -1,22 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenres } from "../../store/genres/actions";
-import { selectGenres } from "../../store/genres/selectors";
+import { selectGenres, selectGenreRelations } from "../../store/genres/selectors";
 import GenreItem from "./GenreItem";
 
 export default function DraggingBoard() {
-  const [tiles, set_tiles] = useState({});
-  const [loading, set_loading] = useState({ loading: "true" });
+  const [tiles, setTiles] = useState({});
+  const [lines, setLines] = useState({});
+  const [loading, setLoading] = useState({ loading: "true" });
   const dispatch = useDispatch();
   const genres = useSelector(selectGenres);
+  const relations = useSelector(selectGenreRelations);
 
   useEffect(() => {
     dispatch(fetchGenres());
   }, [dispatch]);
 
-  // console.log("loading", loading);
+  console.log("relations",  relations);
 
-  if (genres.length === 0) return <h5>Loading</h5>;
+
+  const initialLine = [
+    {
+      x1: "0",
+      y1: "0",
+      x2: "700",
+      y2: "500",
+      id: "1",
+    },
+    {
+      x1: "700",
+      y1: "10",
+      x2: "600",
+      y2: "500",
+      id: "2",
+    },
+    {
+      x1: "20",
+      y1: "200",
+      x2: "700",
+      y2: "900",
+      id: "3",
+    },
+  ];
+
+  if (!genres) return <h5>Loading</h5>;
 
   if (!tiles[1]) {
     const top = -20;
@@ -39,15 +66,15 @@ export default function DraggingBoard() {
 
     const initialState = arrayToObject(genresAddedXY, "id");
 
-    set_tiles(initialState);
-    console.log("initialState", initialState);
-    set_loading({ loading: "false" });
+    setTiles(initialState);
+    // console.log("initialState", initialState);
+    setLoading({ loading: "false" });
   }
 
   const startDragging = (e, id) => {
     const mouseDown = { x: e.clientX, y: e.clientY };
     // console.log("started dragging", mouseDown);
-    set_tiles((t) => {
+    setTiles((t) => {
       return {
         ...t,
         [id]: {
@@ -67,8 +94,8 @@ export default function DraggingBoard() {
       if (tile.dragstate) {
         const dx = e.clientX - tile.dragstate.mouseDown.x;
         const dy = e.clientY - tile.dragstate.mouseDown.y;
-        console.log("drag", dx, dy);
-        set_tiles((t) => {
+        // consolconsole.log("drag", dx, dy);
+        setTiles((t) => {
           return {
             ...t,
             [tileId]: {
@@ -84,10 +111,9 @@ export default function DraggingBoard() {
   };
 
   const stopDragging = () => {
-    console.log("stopped");
+    // console.log("stopped");
     Object.keys(tiles).forEach((tileId) => {
-      const tile = tiles[tileId];
-      set_tiles((t) => ({
+      setTiles((t) => ({
         ...t,
         [tileId]: {
           ...t[tileId],
@@ -100,7 +126,7 @@ export default function DraggingBoard() {
   const boardStyle = {
     position: "relative",
     border: "2px solid black",
-    height: 1000,
+    height: 900,
     width: "100%",
   };
 
@@ -117,6 +143,31 @@ export default function DraggingBoard() {
           />
         );
       })}
+
+      {/* TESTING NEW SVG */}
+      <svg height="900" width="100%">
+        {initialLine.map((line) => {
+          return (
+            <line
+              strokeWidth="1px"
+              stroke="#000000"
+              x1={line.x1}
+              y1={line.y1}
+              x2={line.x2}
+              y2={line.y2}
+              id={line.id}
+              key={line.id}
+            />
+          );
+        })}
+        <path
+          d="M100,200
+             Q350,100 600,300"
+          fill="none"
+          stroke="#000"
+          strokeWidth="2px"
+        />
+      </svg>
     </div>
   );
 }
