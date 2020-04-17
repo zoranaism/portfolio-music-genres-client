@@ -7,6 +7,9 @@ import LoggedOut from "./LoggedOut";
 import MenuItem from "./MenuItem";
 
 export default function Navigation() {
+  const token = useSelector(selectToken);
+  const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+
   const variants = {
     open: {
       zIndex: 1,
@@ -23,10 +26,6 @@ export default function Navigation() {
       },
     },
   };
-
-  const token = useSelector(selectToken);
-
-  const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
     <motion.ul variants={variants}>

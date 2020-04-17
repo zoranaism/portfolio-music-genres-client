@@ -8,7 +8,7 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 // import "./styles.css";
-import { Example } from "../src/components/Navigation/Example";
+import { MainNavContainer } from "../src/components/Navigation/index";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       {/* <Navigation /> */}
-      <Example />
+      <MainNavContainer />
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
