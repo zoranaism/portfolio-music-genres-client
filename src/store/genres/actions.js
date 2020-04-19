@@ -29,7 +29,6 @@ export const fetchGenres = () => {
     try {
       const response = await axios.get(`${apiUrl}/genres`);
 
-      // console.log("From the thunk", response.data.allGenreRelations,  response.data.allGenres);
       dispatch(fetchGenresSuccess(response.data));
       dispatch(appDoneLoading());
     } catch (error) {

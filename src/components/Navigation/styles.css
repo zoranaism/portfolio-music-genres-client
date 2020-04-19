@@ -44,6 +44,7 @@ button.nav-button {
   justify-content: center;
   align-items: center;
   z-index: 2;
+  border: 2px solid white;
 }
 .nav-button:focus {
   outline: none;
