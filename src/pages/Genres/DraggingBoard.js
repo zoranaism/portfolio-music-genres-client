@@ -60,46 +60,18 @@ export default function DraggingBoard() {
         return newElement;
       });
 
-    const relationsAddedXY = addTopLeftLine(relations);
-
+    let linesArray = addTopLeftLine(relations);
 
     Object.keys(initialState).forEach((tileId) => {
       const tile = initialState[tileId];
-      // console.log("tiles in the setting", tile);
-      
-      const newArray = () => relationsAddedXY.map((line) => {
-        // console.log("yeste, isto je genreId", line);
 
-        if (tile.id === line.genreId) {
-          console.log("what are my tiles", tile.top, tile.left);
-          
-          return {
-            ...line,
-            genTY: tile.top + 15,
-            genLX: tile.left + 80,
-          };
-        }
-        if (tile.id === line.otherGenreId) {
-          return {
-            ...line,
-            othGenTY: tile.top + 15,
-            othGenLX: tile.left + 80,
-          };
-        } 
-        else {
-          return line;
-        }
-      });
-
-      return newArray;
-      // setLines(newArray);
+      linesArray = calculateLines(linesArray, tile);
+      console.log("lines array", linesArray);
     });
-
-    // console.log("newArray", newArray);
-
-    setLines(relationsAddedXY);
+    setLines(linesArray);
     setLoading({ loading: "false" });
   }
+
   console.log("lines", lines);
 
   const startDragging = (e, id) => {
@@ -138,32 +110,33 @@ export default function DraggingBoard() {
           };
         });
 
-        setLines((lines) => {
-          return lines.map((line, index) => {
-            // console.log("yeste, isto je genreId", line);
-
-            if (tile.id === line.genreId) {
-              return {
-                ...line,
-                genTY: tile.top + 15,
-                genLX: tile.left + 80,
-              };
-            }
-            if (tile.id === line.otherGenreId) {
-              return {
-                ...line,
-                othGenTY: tile.top + 15,
-                othGenLX: tile.left + 80,
-              };
-            } else {
-              return line;
-            }
-          });
-        });
-      } else {
+        setLines(calculateLines(lines, tile));
       }
     });
   };
+
+  function calculateLines(lines, tile) {
+    return lines.map((line, index) => {
+      // console.log("yeste, isto je genreId", line);
+
+      if (tile.id === line.genreId) {
+        return {
+          ...line,
+          genTY: tile.top + 15,
+          genLX: tile.left + 80,
+        };
+      }
+      if (tile.id === line.otherGenreId) {
+        return {
+          ...line,
+          othGenTY: tile.top + 15,
+          othGenLX: tile.left + 80,
+        };
+      } else {
+        return line;
+      }
+    });
+  }
 
   const stopDragging = () => {
     // console.log("stopped");
@@ -180,7 +153,7 @@ export default function DraggingBoard() {
 
   const boardStyle = {
     position: "relative",
-    border: "5px dotted rgb(29, 64, 255)", 
+    border: "5px dotted rgb(15, 28, 97)",
     borderRadius: "20px",
     height: 870,
     width: "100%",
@@ -223,18 +196,6 @@ export default function DraggingBoard() {
               id={line.id}
               key={line.id}
             />
-            // <path
-            //   d="M100,200
-            //  Q350,100 600,300"
-            //   x1={line.x1}
-            //   y1={line.y1}
-            //   x2={line.x2}
-            //   y2={line.y2}
-            //   fill="none"
-            //   stroke="#000"
-            //   strokeWidth="2px"
-            //   key={line.id}
-            // />
           );
         })}
       </svg>

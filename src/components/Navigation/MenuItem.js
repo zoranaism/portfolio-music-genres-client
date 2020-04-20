@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 export default function MenuItem(props) {
-  
   const useStyles = makeStyles((theme) => ({
     root: {
       ...theme.typography.button,
@@ -36,7 +36,15 @@ export default function MenuItem(props) {
       whileTap={{ scale: 0.95 }}
     >
       <Link as={NavLink} to={props.path}>
-        <div className={classes.root}>{props.linkText}</div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {/* <Icon>{props.FavoriteIcon}</Icon> */}
+          <div className={classes.root}>{props.linkText}</div>
+        </div>
       </Link>
     </motion.li>
   );
