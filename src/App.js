@@ -15,6 +15,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import 'typeface-roboto';
 import Genres from "./pages/Genres";
+import GenreDetails from "./pages/GenreDetails";
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/" component={Genres} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/genres/:id" component={GenreDetails} />
       </Switch>
     </div>
   );

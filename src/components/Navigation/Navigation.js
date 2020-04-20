@@ -5,6 +5,7 @@ import { selectToken } from "../../store/user/selectors";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import MenuItem from "./MenuItem";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -29,8 +30,8 @@ export default function Navigation() {
 
   return (
     <motion.ul variants={variants}>
-      <MenuItem path="/" linkText="Genres" />
-      <MenuItem path="/other" linkText="Other" />
+      <MenuItem path="/" linkText="Genres" FavoriteIcon={FavoriteIcon} />
+      <MenuItem path="/other" linkText="Other" FavoriteIcon={FavoriteIcon}/>
       {loginLogoutControls}
     </motion.ul>
   );

@@ -10,12 +10,14 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 160,
     position: "absolute",
-    paddingLeft: "5px",
     userSelect: "none",
   },
   padding: {
@@ -70,7 +72,11 @@ export default function GenreItem(props) {
     >
       <Card className={classes.root}>
         <CardActions disableSpacing className={classes.padding}>
-          <Typography variant="overline" display="block">
+          <Typography
+            variant="overline"
+            display="block"
+            style={{ paddingLeft: "7px" }}
+          >
             {props.tile.name}
           </Typography>
           <IconButton
@@ -85,20 +91,37 @@ export default function GenreItem(props) {
           </IconButton>
         </CardActions>
 
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse
+          in={expanded}
+          timeout="auto"
+          unmountOnExit
+          style={{ borderTop: "1px solid lightgray" }}
+        >
           <CardActions disableSpacing>
+            <Link to={`/genres/${props.id}`} style={{textDecoration: "none"}}>
+              <Button size="small">
+                <Typography variant="caption">
+                  READ More{" "}
+                  <NavigateNextIcon
+                    style={{ fontSize: "18px", color: "#757575" }}
+                  />
+                </Typography>
+              </Button>
+            </Link>
             <IconButton
               aria-label="add to favorites"
               className={classes.padding}
               style={{ color: "red", height: "28px", width: "28px" }}
             >
-              <FavoriteIcon style={{fontSize: "15px"}}/>
+              <FavoriteIcon style={{ fontSize: "15px" }} />
             </IconButton>
-            <Button size="small">
-              <Typography variant="caption">
-                Learn More
-              </Typography>
-            </Button>
+            <IconButton
+              aria-label="add to favorites"
+              className={classes.padding}
+              style={{ color: "gray", height: "28px", width: "28px" }}
+            >
+              <RemoveCircleIcon style={{ fontSize: "15px" }} />
+            </IconButton>
           </CardActions>
         </Collapse>
       </Card>
