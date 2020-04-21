@@ -28,7 +28,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: "#f5f5f5"}}>
       {/* <Navigation /> */}
       <MainNavContainer />
       <MessageBox />

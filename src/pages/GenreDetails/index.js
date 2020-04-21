@@ -1,40 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Header from "./Header";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchGenreById } from "../../store/artworkDetails/actions";
+import { selectGenreDetails } from "../../store/artworkDetails/selectors";
+import { selectToken } from "../../store/user/selectors";
 
+import Header from "./Header";
+import RelatedGenres from "./RelatedGenres";
+import GenreInfo from "./GenreInfo";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    display: "flex",
-    flexWrap: "wrap",
+  background: {
     backgroundColor: "#f5f5f5",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
   },
 }));
 
 export default function GenreDetails() {
   const classes = useStyles();
   const [selected, setSelected] = React.useState(false);
+  const { id } = useParams();
+  const genre = useSelector(selectGenreDetails);
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    dispatch(fetchGenreById(id));
+  }, [dispatch, id]);
 
   return (
-    <div>
-      <Header setSelected={setSelected} selected={selected}/>
+    <div className={classes.background}>
+      <Header setSelected={setSelected} selected={selected} />
 
-      <Grid container justify="center">
-        <Grid item xs={12} style={{ textAlign: "center" }}>
-          <div className={classes.paper}>
-            <Paper elevation={2}>
-              
-            </Paper>
-          </div>
-        </Grid>
-      </Grid>
+      <RelatedGenres />
+      <GenreInfo />
     </div>
   );
 }
