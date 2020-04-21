@@ -7,8 +7,8 @@ import Box from "@material-ui/core/Box";
 
 export default function Genres() {
   return (
-    <div style={{padding: "30px"}}>
-      <Container maxWidth={false}>
+    <div >
+      <Container maxWidth={false} style={{padding: "30px"}}>
         <Box
           style={{
             padding: "5px",

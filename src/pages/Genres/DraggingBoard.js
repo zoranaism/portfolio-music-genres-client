@@ -7,6 +7,7 @@ import {
 } from "../../store/genres/selectors";
 import GenreItem from "./GenreItem";
 import RelationLine from "./RelationLine";
+import Loading from "../../components/Loading";
 
 export default function DraggingBoard() {
   const [tiles, setTiles] = useState({});
@@ -24,7 +25,7 @@ export default function DraggingBoard() {
   // console.log("tiles", tiles);
   if (!genres) return <h5>Loading</h5>;
 
-  if (genres.length === 0) return <h5>Loading</h5>;
+  // if (genres.length === 0) return <Loading />;
   // if (lines.length === 0) return <h5>Loading</h5>;
 
   if (!tiles[1]) {
@@ -66,13 +67,13 @@ export default function DraggingBoard() {
       const tile = initialState[tileId];
 
       linesArray = calculateLines(linesArray, tile);
-      console.log("lines array", linesArray);
+      // console.log("lines array", linesArray);
     });
     setLines(linesArray);
     setLoading({ loading: "false" });
   }
 
-  console.log("lines", lines);
+  // console.log("lines", lines);
 
   const startDragging = (e, id) => {
     const mouseDown = { x: e.clientX, y: e.clientY };

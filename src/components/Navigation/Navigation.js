@@ -30,8 +30,7 @@ export default function Navigation() {
 
   return (
     <motion.ul variants={variants}>
-      <MenuItem path="/" linkText="Genres" FavoriteIcon={FavoriteIcon} />
-      <MenuItem path="/other" linkText="Other" FavoriteIcon={FavoriteIcon}/>
+      <MenuItem path="/" linkText="Genres" />
       {loginLogoutControls}
     </motion.ul>
   );

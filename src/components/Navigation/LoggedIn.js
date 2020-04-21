@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../store/user/actions";
 import { Button } from "@material-ui/core";
 import { motion, Variants } from "framer-motion";
+import MenuItem from "./MenuItem";
 
 export default function LoggedIn() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export default function LoggedIn() {
   };
   return (
     <>
+   <MenuItem path="/me" linkText="My Page" />
       <motion.li
         variants={variant}
         whileHover={{ scale: 1.1 }}
