@@ -7,15 +7,14 @@ import Box from "@material-ui/core/Box";
 
 export default function Genres() {
   return (
-    <div>
+    <div style={{padding: "30px"}}>
       <Container maxWidth={false}>
         <Box
-          my={4}
           style={{
             padding: "5px",
             backgroundColor: "#cdd3f5",
             borderRadius: "20px",
-            backgroundImage: "radial-gradient(rgb(217, 222, 247), #dfe5f1)"
+            backgroundImage: "radial-gradient(rgb(217, 222, 247), #dfe5f1)", 
           }}
         >
           <DraggingBoard />

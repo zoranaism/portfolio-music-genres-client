@@ -63,7 +63,7 @@ export default function Header({ setSelected, selected }) {
             </Link>
           </div>
 
-          <Box pt={10}>
+          <Box pt={10} mb={5}>
             <Typography className={classes.header}>
               Genre Name
               <br />
