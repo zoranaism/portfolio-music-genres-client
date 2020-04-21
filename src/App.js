@@ -16,6 +16,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import 'typeface-roboto';
 import Genres from "./pages/Genres";
 import GenreDetails from "./pages/GenreDetails";
+import MyPage from "./pages/MyPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/genres/:id" component={GenreDetails} />
+        <Route path="/me" component={MyPage} />
       </Switch>
     </div>
   );
