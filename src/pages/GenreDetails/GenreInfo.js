@@ -48,9 +48,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GenreInfo() {
+export default function GenreInfo({genre}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+
+  // console.log(genre);
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -78,13 +81,13 @@ export default function GenreInfo() {
               <Divider />
             {/* </AppBar> */}
             <TabPanel value={value} index={0}>
-              Item One
+            {genre.history}
             </TabPanel>
             <TabPanel value={value} index={1}>
-              Item Two
+            {genre.characteristics}
             </TabPanel>
             <TabPanel value={value} index={2}>
-              Item Three
+            {genre.origins}
             </TabPanel>
           </Paper>
         </Grid>

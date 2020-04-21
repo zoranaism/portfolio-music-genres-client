@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchGenreById } from "../../store/artworkDetails/actions";
-import { selectGenreDetails } from "../../store/artworkDetails/selectors";
+import { fetchGenreById } from "../../store/genreDetails/actions";
+import { selectGenreDetails, selectGenreRelations } from "../../store/genreDetails/selectors";
 import { selectToken } from "../../store/user/selectors";
 
 import Header from "./Header";
@@ -21,8 +21,12 @@ export default function GenreDetails() {
   const [selected, setSelected] = React.useState(false);
   const { id } = useParams();
   const genre = useSelector(selectGenreDetails);
+  const relations = useSelector(selectGenreRelations);
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+
+  // console.log("genre", genre, "relations", relations);
+  
 
   useEffect(() => {
     dispatch(fetchGenreById(id));
@@ -32,8 +36,8 @@ export default function GenreDetails() {
     <div className={classes.background}>
       <Header setSelected={setSelected} selected={selected} />
 
-      <RelatedGenres />
-      <GenreInfo />
+      <RelatedGenres genre={genre} relations={relations} />
+      <GenreInfo genre={genre} />
     </div>
   );
 }

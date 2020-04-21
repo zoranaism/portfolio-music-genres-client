@@ -21,8 +21,8 @@ export const fetchGenreById = id => {
       dispatch(appLoading());
       try {
         const response = await axios.get(`${apiUrl}/genres/${id}`);
-        console.log("RESPONSE FROM THE THUNK", response.data);
-        // dispatch(genreDetailsFetched(response.data.genre));
+        // console.log("RESPONSE FROM THE THUNK", response.data);
+        dispatch(genreDetailsFetched(response.data));
         dispatch(appDoneLoading());
       } catch (error) {
         if (error.response) {

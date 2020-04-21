@@ -17,8 +17,6 @@ import 'typeface-roboto';
 import Genres from "./pages/Genres";
 import GenreDetails from "./pages/GenreDetails";
 
-
-
 function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
@@ -28,7 +26,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App" style={{backgroundColor: "#f5f5f5"}}>
+    <div className="App" style={{backgroundColor: "#f5f5f5", height: "945px"}}>
       {/* <Navigation /> */}
       <MainNavContainer />
       <MessageBox />
