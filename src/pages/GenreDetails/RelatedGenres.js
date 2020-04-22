@@ -57,6 +57,9 @@ export default function RelatedGenres({ genre, relations }) {
   const classes = useStyles();
   if (relations === null) return <h6>Loading</h6>;
 
+  console.log(relations);
+  
+
   return (
     <div>
       <Container maxWidth="lg">

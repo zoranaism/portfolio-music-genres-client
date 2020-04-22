@@ -14,6 +14,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState({ checked: false });
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -24,10 +25,20 @@ export default function SignUp() {
     }
   }, [token, history]);
 
+  function toggleCheckbox(isAdmin) {
+    setIsAdmin({
+      checked: !isAdmin.checked,
+    });
+  }
+
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(signUp(name, email, password));
+    let admin = isAdmin.checked;
+
+    // console.log(name, email, admin, password);
+
+    dispatch(signUp(name, email, admin, password));
 
     setEmail("");
     setPassword("");
@@ -35,7 +46,14 @@ export default function SignUp() {
   }
 
   return (
-    <motion.div style={pageStyle} initial="initial" exit="out" animate="in" variants={pageVariants} transition={pageTransitions}>
+    <motion.div
+      style={pageStyle}
+      initial="initial"
+      exit="out"
+      animate="in"
+      variants={pageVariants}
+      transition={pageTransitions}
+    >
       <Container>
         <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
           <h1 className="mt-5 mb-5">Signup</h1>
@@ -71,6 +89,13 @@ export default function SignUp() {
               type="password"
               placeholder="Password"
               required
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check
+              type="checkbox"
+              label="I am an admin"
+              onChange={() => toggleCheckbox(isAdmin)}
             />
           </Form.Group>
           <Form.Group className="mt-5">

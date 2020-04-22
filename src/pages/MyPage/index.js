@@ -28,6 +28,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { pageTransitions, pageVariants, pageStyle } from "../pageTransitions";
+import Badge from "@material-ui/core/Badge";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,9 +62,15 @@ const useStyles = makeStyles((theme) => ({
   padding: {
     padding: "20px 30px 10px",
   },
-  header: {
+  mainHeader: {
     ...theme.typography.button,
     fontSize: "25px",
+  },
+  header: {
+    ...theme.typography.overline,
+    fontSize: "20px",
+    marginBottom: 10,
+    lineHeight: 1.2,
   },
   menu: {
     position: "absolute",
@@ -80,11 +87,21 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "100%",
   },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(17),
+    height: theme.spacing(17),
     margin: "0 auto",
   },
+  badge: {
+    "& > *": {
+      margin: theme.spacing(2),
+    },
+  },
 }));
+
+// const defaultProps = {
+//   color: 'secondary',
+//   children: <Avatar />,
+// };
 
 export default function MyPage() {
   const user = useSelector(selectUser);
@@ -93,32 +110,128 @@ export default function MyPage() {
   const classes = useStyles();
   const likes = useSelector(selectUserLikes);
 
+  // if (!user.isAdmin) {
+
+  // }
   if (token === null) {
     history.push("/");
   }
-  //   console.log("selectUser", user);
+  console.log("selectUser", user);
 
   if (!likes) return <h5>Loading</h5>;
 
   return (
-    <motion.div style={pageStyle} initial="initial" exit="out" animate="in" variants={pageVariants} transition={pageTransitions}>
+    <motion.div
+      style={pageStyle}
+      initial="initial"
+      exit="out"
+      animate="in"
+      variants={pageVariants}
+      transition={pageTransitions}
+    >
       <Container maxWidth="lg">
-        <Grid container justify="center">
+        <Grid container>
           <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
             <Box pt={10} mb={5}>
-              <Avatar
-                alt="My profile"
-                src="https://i.pinimg.com/originals/2e/2f/ac/2e2fac9d4a392456e511345021592dd2.jpg"
-                className={classes.large}
-              />
-              <Typography className={classes.header}>
-                {user.name}
-                <br />
-              </Typography>
-              <Typography variant="h6" gutterBottom>
-                <small>{user.email}</small>
-              </Typography>
+              <Grid container spacing={4}>
+                <Grid item xs={12} sm={2}>
+                  <Badge
+                    color="primary"
+                    badgeContent="Admin"
+                    style={{ visibility: user.isAdmin ? "visible" : "none" }}
+                  >
+                    <Avatar
+                      alt="My profile"
+                      src={user.image}
+                      className={classes.large}
+                    />
+                  </Badge>
+                </Grid>
+
+                {/* <Badge badgeContent="Admin" {...defaultProps} /> */}
+                <Grid item xs={12} sm={2}>
+                  <Typography className={classes.mainHeader}>
+                    {user.name}
+                    <br />
+                  </Typography>
+                  <Typography variant="h6" gutterBottom>
+                    <small>{user.email}</small>
+                  </Typography>
+                </Grid>
+              </Grid>
             </Box>
+          </Grid>
+        </Grid>
+        {/*  */}
+
+        <Grid container spacing={4}>
+          <Grid xs={12} sm={6} item>
+            <Paper
+              style={{
+                position: "relative",
+                height: "auto",
+                width: "100%",
+                marginBottom: "30px",
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                style={{ position: "relative", height: "auto" }}
+              >
+                <Box pb={1} pl={3} pt={2} pb={0}>
+                  <Typography
+                    variant="h6"
+                    className={classes.header}
+                    gutterBottom
+                  >
+                    Music genres I like
+                  </Typography>
+                </Box>
+                <Divider />
+                <Typography
+                  variant="body1"
+                  gutterBottom
+                  style={{ padding: "20px" }}
+                >
+                  {user.music}
+                </Typography>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid xs={12} sm={6} item>
+            <Paper
+              style={{
+                position: "relative",
+                height: "auto",
+                width: "100%",
+                marginBottom: "30px",
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                style={{ position: "relative", height: "auto" }}
+              >
+                <Box pb={1} pl={3} pt={2} pb={0}>
+                  <Typography
+                    variant="h6"
+                    className={classes.header}
+                    gutterBottom
+                  >
+                    About me
+                  </Typography>
+                </Box>
+                <Divider />
+                <Typography
+                  variant="body1"
+                  gutterBottom
+                  style={{ padding: "20px" }}
+                >
+                  {user.about}
+                </Typography>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
 
@@ -142,21 +255,15 @@ export default function MyPage() {
                   className={classes.header}
                   gutterBottom
                 >
-                  Music genres I like
-                </Typography>
-                <Typography variant="caption" display="block" gutterBottom>
-                  Genres that have influenced on or where influenced by this
-                  genre
+                  Fav genres
                 </Typography>
               </Box>
               <Divider />
+
               <GridList className={classes.gridList}>
                 {likes.map((genre) => (
                   <GridListTile key={genre.id} style={{ width: "200px" }}>
-                    <img
-                      src="https://i.pinimg.com/originals/02/05/11/020511bede2858a41c5bb3b646337a68.png"
-                      alt=""
-                    />
+                    <img src={genre.img} alt="" />
 
                     <GridListTileBar
                       title={genre.name}
