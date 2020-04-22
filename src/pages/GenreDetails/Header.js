@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
 import Fab from "@material-ui/core/Fab";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ToggleButton from "@material-ui/lab/ToggleButton";
@@ -74,7 +73,6 @@ export default function Header({ setSelected, selected }) {
           </Box>
         </Grid>
       </Grid>
-
     </div>
   );
 }

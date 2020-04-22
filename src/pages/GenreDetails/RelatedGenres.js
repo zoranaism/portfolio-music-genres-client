@@ -90,7 +90,7 @@ export default function RelatedGenres({ genre, relations }) {
               <Divider />
               <GridList className={classes.gridList}>
                 {relations.map((relation) => (
-                  <GridListTile style={{ width: "200px" }}>
+                  <GridListTile key={relation.id} style={{ width: "200px" }}>
                     <img
                       src="https://i.pinimg.com/originals/02/05/11/020511bede2858a41c5bb3b646337a68.png"
                       alt=""
