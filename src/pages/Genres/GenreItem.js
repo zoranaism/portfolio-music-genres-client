@@ -1,48 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
-import { Link } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 160,
-    position: "absolute",
-    userSelect: "none",
-  },
-  padding: {
-    padding: "0",
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    padding: "0",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-}));
+import GenreTile from "../../components/GenreTile";
 
 export default function GenreItem(props) {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const { tile, setTile } = props;
 
   const onMouseDownStartDragging = (event, id) => {
     props.startDragging(event, id);
@@ -61,7 +22,6 @@ export default function GenreItem(props) {
       }}
       style={{
         position: "absolute",
-
         height: 30,
         textAlign: "center",
         backgroundColor: "rgb(255, 255, 255)",
@@ -70,61 +30,11 @@ export default function GenreItem(props) {
       }}
       onMouseDown={(event) => onMouseDownStartDragging(event, props.id)}
     >
-      <Card className={classes.root}>
-        <CardActions disableSpacing className={classes.padding}>
-          <Typography
-            variant="overline"
-            display="block"
-            style={{ paddingLeft: "7px" }}
-          >
-            {props.tile.name}
-          </Typography>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-
-        <Collapse
-          in={expanded}
-          timeout="auto"
-          unmountOnExit
-          style={{ borderTop: "1px solid lightgray" }}
-        >
-          <CardActions disableSpacing>
-            <Link to={`/genres/${props.id}`} style={{textDecoration: "none"}}>
-              <Button size="small">
-                <Typography variant="caption">
-                  READ More{" "}
-                  <NavigateNextIcon
-                    style={{ fontSize: "18px", color: "#757575" }}
-                  />
-                </Typography>
-              </Button>
-            </Link>
-            <IconButton
-              aria-label="add to favorites"
-              className={classes.padding}
-              style={{ color: "red", height: "28px", width: "28px" }}
-            >
-              <FavoriteIcon style={{ fontSize: "15px" }} />
-            </IconButton>
-            <IconButton
-              aria-label="add to favorites"
-              className={classes.padding}
-              style={{ color: "gray", height: "28px", width: "28px" }}
-            >
-              <RemoveCircleIcon style={{ fontSize: "15px" }} />
-            </IconButton>
-          </CardActions>
-        </Collapse>
-      </Card>
+      <GenreTile
+        onMouseDownStartDragging={onMouseDownStartDragging}
+        tile={tile}
+        setTile={setTile}
+      />
     </motion.div>
   );
 }

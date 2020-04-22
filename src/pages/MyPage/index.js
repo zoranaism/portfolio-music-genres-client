@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getUserWithStoredToken } from "../../store/user/actions";
-import { selectUser, selectToken, selectUserLikes } from "../../store/user/selectors";
+// import { getUserWithStoredToken } from "../../store/user/actions";
+import {
+  selectUser,
+  selectToken,
+  selectUserLikes,
+} from "../../store/user/selectors";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,11 +20,14 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
-import Fab from "@material-ui/core/Fab";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
+// import Fab from "@material-ui/core/Fab";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ToggleButton from "@material-ui/lab/ToggleButton";
+// import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
 import Avatar from "@material-ui/core/Avatar";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { pageTransitions, pageVariants, pageStyle } from "../pageTransitions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,12 +58,6 @@ const useStyles = makeStyles((theme) => ({
       height: theme.spacing(16),
     },
   },
-  //   header: {
-  //     ...theme.typography.overline,
-  //     fontSize: "20px",
-  //     marginBottom: 0,
-  //     lineHeight: 1.2,
-  //   },
   padding: {
     padding: "20px 30px 10px",
   },
@@ -81,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
-    margin: "0 auto"
+    margin: "0 auto",
   },
 }));
 
@@ -90,17 +91,17 @@ export default function MyPage() {
   const history = useHistory();
   const token = useSelector(selectToken);
   const classes = useStyles();
-  const likes = useSelector(selectUserLikes)
+  const likes = useSelector(selectUserLikes);
 
   if (token === null) {
     history.push("/");
   }
-//   console.log("selectUser", user);
+  //   console.log("selectUser", user);
 
-  if (!likes) return <h5>Loading</h5>
+  if (!likes) return <h5>Loading</h5>;
 
   return (
-    <div>
+    <motion.div style={pageStyle} initial="initial" exit="out" animate="in" variants={pageVariants} transition={pageTransitions}>
       <Container maxWidth="lg">
         <Grid container justify="center">
           <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
@@ -164,9 +165,14 @@ export default function MyPage() {
                         title: classes.title,
                       }}
                       actionIcon={
-                        <IconButton aria-label={`Title`}>
-                          <KeyboardArrowRightIcon className={classes.title} />
-                        </IconButton>
+                        <Link
+                          to={`/genres/${genre.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <IconButton aria-label={`Title`}>
+                            <KeyboardArrowRightIcon className={classes.title} />
+                          </IconButton>
+                        </Link>
                       }
                     ></GridListTileBar>
                   </GridListTile>
@@ -176,6 +182,6 @@ export default function MyPage() {
           </Paper>
         </Grid>
       </Container>
-    </div>
+    </motion.div>
   );
 }

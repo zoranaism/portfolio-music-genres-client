@@ -1,22 +1,14 @@
 .loading_spinner {
   z-index: 9999;
-  width: 100vw;
-  height: 100vh;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   background-color: #3f51b5;
-  animation: fade 2s linear;
-  opacity: 1;
-}
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-@keyframes fade {
-  100% {
-    opacity: 0;
-  }
-  0%,
-  20% {
-    opacity: 1;
-  }
 }

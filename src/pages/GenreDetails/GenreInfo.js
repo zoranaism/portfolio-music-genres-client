@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 
 function TabPanel(props) {
@@ -48,46 +48,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GenreInfo({genre}) {
+export default function GenreInfo({ genre }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   // console.log(genre);
-  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div className={classes.root} >
+    <div className={classes.root}>
       <Container maxWidth="lg">
-        <Grid >
+        <Grid>
           <Paper>
             {/* <AppBar position="static" color="default"> */}
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="scrollable"
-                scrollButtons="auto"
-                aria-label="scrollable auto tabs example"
-              >
-                <Tab label="History" {...a11yProps(0)} />
-                <Tab label="Characteristics" {...a11yProps(1)} />
-                <Tab label="Origins" {...a11yProps(2)} />
-              </Tabs>
-              <Divider />
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="scrollable auto tabs example"
+            >
+              <Tab label="History" {...a11yProps(0)} />
+              <Tab label="Characteristics" {...a11yProps(1)} />
+              <Tab label="Origins" {...a11yProps(2)} />
+            </Tabs>
+            <Divider />
             {/* </AppBar> */}
             <TabPanel value={value} index={0}>
-            {genre.history}
+              {genre.history}
             </TabPanel>
             <TabPanel value={value} index={1}>
-            {genre.characteristics}
+              {genre.characteristics}
             </TabPanel>
             <TabPanel value={value} index={2}>
-            {genre.origins}
+              {genre.origins}
             </TabPanel>
           </Paper>
         </Grid>
