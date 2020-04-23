@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   loader: {
-    color: "white",
+    color: "#3f51b5",
   },
 }));
 

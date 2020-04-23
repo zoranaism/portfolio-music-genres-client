@@ -24,13 +24,13 @@ export const fetchGenresSuccess = genres => ({
 
 export const fetchGenres = () => {
   return async (dispatch, getState) => {
-    dispatch(appLoading());
+    // dispatch(appLoading());
 
     try {
       const response = await axios.get(`${apiUrl}/genres`);
 
       dispatch(fetchGenresSuccess(response.data));
-      dispatch(appDoneLoading());
+      // dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         // console.log(error.response.message);
@@ -39,7 +39,7 @@ export const fetchGenres = () => {
         // console.log(error);
         dispatch(setMessage("danger", true, error.message));
       }
-      dispatch(appDoneLoading());
+      // dispatch(appDoneLoading());
     }
   };
 };

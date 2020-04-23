@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { fetchGenres } from "../../store/genres/actions";
 import {
   selectGenres,
@@ -12,6 +12,7 @@ import NewGenreForm from "./NewGenreForm";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { pageTransitions, pageVariants, pageStyle } from "../pageTransitions";
+import Loading from "../../components/Loading";
 
 export default function Genres() {
   const [tiles, setTiles] = useState({});
@@ -24,7 +25,7 @@ export default function Genres() {
     dispatch(fetchGenres());
   }, [dispatch]);
 
-  if (!genres) return <p>Loading</p>;
+  if (!genres) return <Loading />;
 
   if (!tiles[1]) {
     const top = -20;
@@ -72,7 +73,6 @@ export default function Genres() {
 
   function calculateLines(lines, tile) {
     return lines.map((line) => {
-
       if (tile.id === line.genreId) {
         return {
           ...line,
@@ -93,7 +93,14 @@ export default function Genres() {
   }
 
   return (
-    <motion.div style={pageStyle} initial="initial" exit="out" animate="in" variants={pageVariants} transition={pageTransitions}>
+    <motion.div
+      style={pageStyle}
+      initial="initial"
+      exit="out"
+      animate="in"
+      variants={pageVariants}
+      transition={pageTransitions}
+    >
       <Container maxWidth={false} style={{ padding: "30px" }}>
         <Box
           style={{
@@ -103,16 +110,21 @@ export default function Genres() {
             backgroundImage: "radial-gradient(rgb(217, 222, 247), #dfe5f1)",
           }}
         >
-          <DraggingBoard
-            tiles={tiles}
-            setTiles={setTiles}
-            lines={lines}
-            setLines={setLines}
-            genres={genres}
-            relations={relations}
-            calculateLines={calculateLines}
-          />
-          <NewGenreForm />
+          {!genres ? (
+            <Loading />
+          ) : (
+            <DraggingBoard
+              tiles={tiles}
+              setTiles={setTiles}
+              lines={lines}
+              setLines={setLines}
+              genres={genres}
+              relations={relations}
+              calculateLines={calculateLines}
+            />
+          )}
+
+          <NewGenreForm genres={genres}/>
         </Box>
       </Container>
     </motion.div>

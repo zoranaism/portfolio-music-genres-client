@@ -10,9 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GENRE_DETAILS_FETCHED:
-      const { genre, otherRelations, relations } = action.payload;
-      const allRelations = otherRelations.concat(relations);
-      return { ...genre, relations: [...allRelations] };
+      return { ...action.payload };
 
     default:
       return state;

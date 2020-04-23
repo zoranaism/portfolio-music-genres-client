@@ -15,15 +15,14 @@ const genreDetailsFetched = genre => ({
   payload: genre
 });
 
-
 export const fetchGenreById = id => {
     return async (dispatch, getState) => {
-      dispatch(appLoading());
+      // dispatch(appLoading());
       try {
         const response = await axios.get(`${apiUrl}/genres/${id}`);
         // console.log("RESPONSE FROM THE THUNK", response.data);
-        dispatch(genreDetailsFetched(response.data));
-        dispatch(appDoneLoading());
+        dispatch(genreDetailsFetched(response.data.genre));
+        // dispatch(appDoneLoading());
       } catch (error) {
         if (error.response) {
           console.log(error.response.message);
@@ -32,7 +31,7 @@ export const fetchGenreById = id => {
           console.log(error);
           dispatch(setMessage("danger", true, error.message));
         }
-        dispatch(appDoneLoading());
+        // dispatch(appDoneLoading());
       }
     };
   };

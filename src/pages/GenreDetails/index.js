@@ -38,7 +38,7 @@ export default function GenreDetails() {
 
   return (
     <motion.div style={pageStyle} className={classes.background} initial="initial" exit="out" animate="in" variants={pageVariants} transition={pageTransitions} >
-      <Header setSelected={setSelected} selected={selected} />
+      <Header genre={genre} setSelected={setSelected} selected={selected} />
       <RelatedGenres genre={genre} relations={relations} />
       <GenreInfo genre={genre} />
     </motion.div>
