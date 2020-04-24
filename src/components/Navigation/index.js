@@ -19,6 +19,7 @@ export const MainNavContainer = () => {
       ref={containerRef}
       initial={false}
       animate={isOpen ? "open" : "closed"}
+      className="main-navigation"
     >
       <motion.div className="background" variants={backgroundVariants} />
       <Navigation />

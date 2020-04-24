@@ -17,8 +17,6 @@ import About from "./About";
 import MusicILike from "./MusicILike";
 import FavGenres from "./FavGenres";
 
-
-
 export default function MyPage() {
   const user = useSelector(selectUser);
   const history = useHistory();
@@ -29,9 +27,12 @@ export default function MyPage() {
 
   // }
   if (token === null) {
-    history.push("/");
+    setTimeout(() => {
+      history.push("/");
+    }, 0);
   }
-  console.log("selectUser", user);
+
+  // console.log("selectUser", user);
 
   // if (!likes) return <h5>Loading</h5>;
 
@@ -57,7 +58,7 @@ export default function MyPage() {
           </Grid>
         </Grid>
 
-       <FavGenres likes={likes}/>
+        <FavGenres likes={likes} />
       </Container>
     </motion.div>
   );

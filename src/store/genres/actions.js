@@ -1,26 +1,25 @@
-
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
-// import { selectToken } from "../user/selectors";
+import { selectToken } from "../user/selectors";
 
 export const FETCH_GENRES_SUCCESS = "FETCH_GENRES_SUCCESS";
-// export const CREATE_GENRE_SUCCESS = "CREATE_GENRE_SUCCESS";
+export const CREATE_GENRE_SUCCESS = "CREATE_GENRE_SUCCESS";
 
-export const fetchGenresSuccess = genres => ({
+export const fetchGenresSuccess = (genres) => ({
   type: FETCH_GENRES_SUCCESS,
-  payload: genres
+  payload: genres,
 });
 
-// export const postGenreSuccess = newGenre => ({
-//   type: CREATE_GENRE_SUCCESS,
-//   payload: newGenre
-// });
+export const genreCreated = (newGenre) => ({
+  type: CREATE_GENRE_SUCCESS,
+  payload: newGenre,
+});
 
 export const fetchGenres = () => {
   return async (dispatch, getState) => {
@@ -44,35 +43,40 @@ export const fetchGenres = () => {
   };
 };
 
-export const postGenre = (name, oneLineDescr) => {
+export const createGenre = (name, img, oneLineDescr, relations) => {
   return async (dispatch, getState) => {
     try {
-      // const token = selectToken(getState());
-      // console.log(name, content, imageUrl);
+      const token = selectToken(getState());
+      console.log("reaching here");
+      
 
       const response = await axios.post(
-        `${apiUrl}/genres`,
-        {
+        `${apiUrl}/genres/`,
+        { 
           name, 
-          oneLineDescr
+          img, 
+          oneLineDescr, 
+          relations 
         },
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`
-        //   }
-        // }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      console.log("Yep!", response.data.genre);
+      console.log("THUNK RESPONSE", response.data);
 
       dispatch(
-        showMessageWithTimeout("success", false, response.data.message, 3000)
+        showMessageWithTimeout(
+          "success",
+          true,
+          "Genre created successfully.",
+          3000
+        )
       );
-      // dispatch(postGenreSuccess(response.data.artwork));
+      // dispatch(genreCreated(response.data));
     } catch (error) {
       if (error.response) {
+        console.log(error.response.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
+        console.log(error);
         dispatch(setMessage("danger", true, error.message));
       }
     }

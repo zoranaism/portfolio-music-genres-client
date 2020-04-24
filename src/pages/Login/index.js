@@ -58,7 +58,7 @@ export default function SignUp() {
         <CssBaseline />
         <Container maxWidth="xs" style={{ textAlign: "center" }}>
           <form className={classes.root}>
-            <Box pt={6}>
+            <Box pt={26}>
               <div
                 style={{
                   backgroundColor: "#a6b3fd",

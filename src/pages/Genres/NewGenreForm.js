@@ -1,51 +1,111 @@
 import React, { useState } from "react";
-import Fab from "@material-ui/core/Fab";
+import { useSelector, useDispatch } from "react-redux";
+import CheckboxesTags from "./CheckboxesTags";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import TextField from '@material-ui/core/TextField';
+import Fab from "@material-ui/core/Fab";
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
-import CheckboxesTags from "./CheckboxesTags"
+import Box from "@material-ui/core/Box";
+import { createGenre } from "../../store/genres/actions";
 
-export default function NewGenreForm({genres}) {
-  const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+export default function NewGenreForm({ genres }) {
+  const [isOpen, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [img, setImg] = useState("");
+  const [oneLineDescr, setOneLineDescr] = useState("");
+  const [relations, setRelations] = useState([]);
 
-  const handleClose = () => {
-    setOpen(false);
+  const submitForm = (name, img, oneLineDescr, relations) => {
+    console.log("LOG AMOUNT IN A DISPATCH", name, img, oneLineDescr, relations);
+    // dispatch(createGenre(name, img, oneLineDescr, relations));
   };
 
   return (
-    <div>
-      <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
-        <AddCircleIcon />
+    <div style={{ position: "absolute", top: 20, right: 20 }}>
+      <Fab
+        style={{ float: "right", height: "50px", width: "50px" }}
+        color="primary"
+        aria-label="add"
+        // toggle={() => setOpen(!isOpen)}
+      >
+        <AddCircleIcon
+          style={{
+            fontSize: "54px",
+            fill: "#3f51b5",
+            background: "white",
+            borderRadius: "100%",
+          }}
+        />
       </Fab>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-        <DialogContent>
-          
-          <CheckboxesTags genres={genres}/>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
+      <form
+        style={{
+          border: "1px solid #3f51b5",
+          background: "white",
+          padding: "20px",
+        }}
+      >
+        <Box mb={1}>
+          <TextField
+            required
+            id="name"
+            label="Genre Name"
+            style={{ width: 300 }}
+            type="text"
+            variant="outlined"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </Box>
+        <br />
+        <Box mb={1}>
+          <TextField
+            required
+            id="img"
+            label="Genre image link"
+            style={{ width: 300 }}
+            variant="outlined"
+            type="text"
+            value={img}
+            onChange={(event) => setImg(event.target.value)}
+          />
+        </Box>
+        <br />
+        <Box mb={1}>
+          <TextField
+            required
+            id="oneLineDescr"
+            label="Genre one line description"
+            multiline
+            rows="4"
+            type="text"
+            style={{ width: 300 }}
+            variant="outlined"
+            value={oneLineDescr}
+            onChange={(event) => setOneLineDescr(event.target.value)}
+          />
+        </Box>
+        <br />
+        <Box mb={1}>
+          <CheckboxesTags genres={genres} setRelations={setRelations} />
+        </Box>
+        <br />
+        <Box>
+          <Button
+            style={{ marginRight: "15px" }}
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={() => submitForm(name, img, oneLineDescr, relations)}
+          >
+            Submit
+          </Button>
+          <Button variant="contained" color="inherit">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button>
-        </DialogActions>
-      </Dialog>
-
+        </Box>
+      </form>
     </div>
   );
 }

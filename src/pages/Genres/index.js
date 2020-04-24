@@ -25,11 +25,9 @@ export default function Genres() {
     dispatch(fetchGenres());
   }, [dispatch]);
 
-  if (!genres) return <Loading />;
-
-  if (!tiles[1]) {
+  if (genres && !tiles[1]) {
     const top = -20;
-    const left = 60;
+    const left = 760;
     const addTopLeft = (elements, x, y) =>
       elements.map((element) => {
         const newElement = { ...element, top: (x += 40), left: y };
@@ -113,18 +111,19 @@ export default function Genres() {
           {!genres ? (
             <Loading />
           ) : (
-            <DraggingBoard
-              tiles={tiles}
-              setTiles={setTiles}
-              lines={lines}
-              setLines={setLines}
-              genres={genres}
-              relations={relations}
-              calculateLines={calculateLines}
-            />
+            <>
+              <DraggingBoard
+                tiles={tiles}
+                setTiles={setTiles}
+                lines={lines}
+                setLines={setLines}
+                genres={genres}
+                relations={relations}
+                calculateLines={calculateLines}
+              />
+              <NewGenreForm genres={genres} />
+            </>
           )}
-
-          <NewGenreForm genres={genres}/>
         </Box>
       </Container>
     </motion.div>

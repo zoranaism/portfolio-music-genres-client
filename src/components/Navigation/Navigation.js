@@ -29,7 +29,7 @@ export default function Navigation() {
   };
 
   return (
-    <motion.ul variants={variants}>
+    <motion.ul variants={variants} className="nav-ul">
       <MenuItem path="/" linkText="Genres" />
       {loginLogoutControls}
     </motion.ul>

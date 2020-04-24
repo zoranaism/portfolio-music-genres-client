@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: "30px",
     top: "80px",
+    zIndex: 100,
     "& > *": {
       margin: theme.spacing(1),
     },
@@ -42,9 +43,9 @@ export default function Header({ setSelected, selected, genre }) {
   return (
     <div>
       <Grid container justify="center">
-        <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
+        <Grid item xs={12} sm={12} style={{ textAlign: "center", position: "relative" }}>
+          <div style={{ background: `url(${genre.img})`, position: "absolute", width: "100%", height: "100%", opacity: "0.1" }}></div>
           <div className={classes.menu}>
-         
             <ToggleButton
               value="check"
               selected={selected}
@@ -65,12 +66,16 @@ export default function Header({ setSelected, selected, genre }) {
           </div>
 
           <Box pt={10} mb={5}>
-          <img src={genre.img} alt={genre.name} style={{height: "150px", width: "150px"}} /> 
+            <img
+              src={genre.img}
+              alt={genre.name}
+              style={{ height: "150px", width: "150px" }}
+            />
             <Typography className={classes.header}>
-             {genre.name}
+              {genre.name}
               <br />
             </Typography>
-            
+
             <Typography variant="h6" gutterBottom>
               <small>{genre.oneLineDescr}</small>
             </Typography>
