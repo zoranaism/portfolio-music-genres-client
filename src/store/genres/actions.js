@@ -47,9 +47,7 @@ export const createGenre = (name, img, oneLineDescr, relations) => {
   return async (dispatch, getState) => {
     try {
       const token = selectToken(getState());
-      console.log("reaching here");
       
-
       const response = await axios.post(
         `${apiUrl}/genres/`,
         { 
@@ -70,7 +68,7 @@ export const createGenre = (name, img, oneLineDescr, relations) => {
           3000
         )
       );
-      // dispatch(genreCreated(response.data));
+      dispatch(genreCreated(response.data));
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);

@@ -38,13 +38,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ setSelected, selected, genre }) {
   const classes = useStyles();
-  console.log(genre);
+  // console.log(genre);
 
   return (
     <div>
       <Grid container justify="center">
-        <Grid item xs={12} sm={12} style={{ textAlign: "center", position: "relative" }}>
-          <div style={{ background: `url(${genre.img})`, position: "absolute", width: "100%", height: "100%", opacity: "0.1" }}></div>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          style={{ textAlign: "center", position: "relative" }}
+        >
+          <div
+            style={{
+              background: `url(${genre.img})`,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              opacity: "0.1",
+              // backgroundRepeat: "repeat-x",
+              // backgroundPosition: "center",
+            }}
+          ></div>
           <div className={classes.menu}>
             <ToggleButton
               value="check"

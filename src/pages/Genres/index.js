@@ -23,53 +23,78 @@ export default function Genres() {
 
   useEffect(() => {
     dispatch(fetchGenres());
-  }, [dispatch]);
+  }, []);
 
-  if (genres && !tiles[1]) {
-    const top = -20;
-    const left = 760;
-    const addTopLeft = (elements, x, y) =>
-      elements.map((element) => {
-        const newElement = { ...element, top: (x += 40), left: y };
-        return newElement;
+  useEffect(() => {
+    console.log("USE EFFECT LINE 29", genres, tiles[1]);
+
+    if (genres) {
+      console.log("IT STARTED REFETCHING");
+      const top = -20;
+      const left = 760;
+      const addTopLeft = (elements, x, y) =>
+        elements.map((element) => {
+          const newElement = { ...element, top: (x += 40), left: y };
+          return newElement;
+        });
+
+      const genresAddedXY = addTopLeft(genres, top, left);
+
+      const arrayToObject = (array, keyField) =>
+        array.reduce((obj, item) => {
+          obj[item[keyField]] = item;
+          return obj;
+        }, {});
+
+      const initialState = arrayToObject(genresAddedXY, "id");
+
+      // HARDCODED FOR THE DEMO DAY
+      initialState[1].top = 100;
+      initialState[1].left = 200;
+      initialState[2].top = 70;
+      initialState[2].left = 770;
+      initialState[3].top = 270;
+      initialState[3].left = 1170;
+      initialState[4].top = 370;
+      initialState[4].left = 270;
+      initialState[5].top = 670;
+      initialState[5].left = 570;
+      initialState[6].top = 250;
+      initialState[6].left = 570;
+      initialState[7].top = 500;
+      initialState[7].left = 870;
+      // HARDCODED FOR THE DEMO DAY
+
+      //  initial tile state is set
+      setTiles(initialState);
+
+      const addTopLeftLine = (elements) =>
+        elements.map((element) => {
+          const newElement = {
+            ...element,
+            genLX: 0,
+            genTY: 0,
+            othGenLX: 0,
+            othGenTY: 0,
+          };
+          return newElement;
+        });
+
+      let linesArray = addTopLeftLine(relations);
+
+      Object.keys(initialState).forEach((tileId) => {
+        const tile = initialState[tileId];
+
+        linesArray = calculateLines(linesArray, tile);
       });
-
-    const genresAddedXY = addTopLeft(genres, top, left);
-
-    const arrayToObject = (array, keyField) =>
-      array.reduce((obj, item) => {
-        obj[item[keyField]] = item;
-        return obj;
-      }, {});
-
-    const initialState = arrayToObject(genresAddedXY, "id");
-
-    //  initial tile state is set
-    setTiles(initialState);
-
-    const addTopLeftLine = (elements) =>
-      elements.map((element) => {
-        const newElement = {
-          ...element,
-          genLX: 0,
-          genTY: 0,
-          othGenLX: 0,
-          othGenTY: 0,
-        };
-        return newElement;
-      });
-
-    let linesArray = addTopLeftLine(relations);
-
-    Object.keys(initialState).forEach((tileId) => {
-      const tile = initialState[tileId];
-
-      linesArray = calculateLines(linesArray, tile);
-    });
-    setLines(linesArray);
-  }
+      setLines(linesArray);
+    }
+    
+  }, [genres, relations]);
 
   function calculateLines(lines, tile) {
+    
+    console.log("FUNCTION IS CALLED");
     return lines.map((line) => {
       if (tile.id === line.genreId) {
         return {
@@ -89,6 +114,8 @@ export default function Genres() {
       }
     });
   }
+
+  console.log("TILES NEW FETCH", tiles);
 
   return (
     <motion.div

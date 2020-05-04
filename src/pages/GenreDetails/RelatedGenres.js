@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     // textAlign: "center",
     top: "70px",
-    paddingTop: "30px",
+    padding: "30px 0",
   },
   title: {
     color: "white",
@@ -55,12 +55,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RelatedGenres({ genre, relations }) {
+export default function RelatedGenres({ genre, relations, otherRelations }) {
   const classes = useStyles();
-  // if (relations === null) return <Loading />;
+  const concat = (...arrays) => [].concat(...arrays.filter(Array.isArray));
+  const allRelations = concat(relations, otherRelations)
 
-  // console.log(relations);
-  // const loadingRelations = relations === null ? (<Loading/>) : relations;
+  console.log("allRelations", allRelations);
+  
 
   return (
     <div>
@@ -69,7 +70,7 @@ export default function RelatedGenres({ genre, relations }) {
           <Paper
             style={{
               position: "relative",
-              height: "320px",
+              height: "auto",
               width: "100%",
               marginBottom: "30px",
             }}
@@ -77,7 +78,7 @@ export default function RelatedGenres({ genre, relations }) {
             <Grid
               item
               xs={12}
-              style={{ position: "relative", height: "370px" }}
+              style={{ position: "relative", height: "auto" }}
             >
               <Box pb={1} pl={3} pt={2} pb={0}>
                 <Typography
@@ -95,7 +96,7 @@ export default function RelatedGenres({ genre, relations }) {
               <Divider />
               <GridList className={classes.gridList}>
 
-              {relations ? (relations.map((relation) => (
+              {allRelations ? (allRelations.map((relation) => (
                   <GridListTile key={relation.id} style={{ width: "200px" }}>
                     <img src={relation.img} alt={relation.name} />
 

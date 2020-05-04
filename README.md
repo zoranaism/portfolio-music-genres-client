@@ -1,10 +1,10 @@
-# :house_with_garden: let & GO :house_with_garden:
+# :musical_note: Genre Relations :musical_note:
 
 ## What this app is about
 
-:wave:[Check out the deploy version](https://let-and-go.netlify.com/):wave:
+<!-- :wave:[Check out the deploy version](https://let-and-go.netlify.com/):wave: -->
 
-let & GO promotes sustainability :recycle: and communal sharing :couple: . This application allows users to rent out or lease their stuff to their neighbours and build up neighbourhood bonds. With let & GO, you never need to clutter your house with things you only use once or twice. You can finally meet your neighbours while earning some extra money :moneybag: by sharing your stuff that you haven't use for a while.
+Genre Relations is a basically a social media/Music Wikipadia network where people can read, disscuss, blog, like, share, add musical genres and everything about them. It has a great visual display of muscial genres and their relations in a form of a dynamic chart. This website if for all music fans and fanatics, because it connects all the people with similar musical taste. 
 
 ## Table of contents
 
@@ -17,10 +17,9 @@ let & GO promotes sustainability :recycle: and communal sharing :couple: . This 
 
 ## App demo
 
-![let-go_Screenshot2](https://user-images.githubusercontent.com/48523895/77710430-3ddc1100-6fce-11ea-9dc3-f8462d935d61.png)
+![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/tree/master/src/GenrePage.png)
 ![let-go_Screenshot](https://user-images.githubusercontent.com/48523895/77710385-1f761580-6fce-11ea-9313-3ad89e46bb14.png)
-![let-go_Screenshot3](https://user-images.githubusercontent.com/48523895/77710605-cce92900-6fce-11ea-80b4-62d6073d69d2.png)
-![let-go-gif1](https://github.com/NicoleKuong/let-GO-client/blob/master/src/assets/lego-gif-1.gif)
+
 
 ## Technology used
 
