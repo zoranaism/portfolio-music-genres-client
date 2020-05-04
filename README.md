@@ -17,7 +17,7 @@ Genre Relations is a basically a social media/Music Wikipadia network where peop
 
 ## App demo
 
-![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/tree/master/src/GenrePage.png)
+![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/GenrePage.png)
 ![let-go_Screenshot](https://user-images.githubusercontent.com/48523895/77710385-1f761580-6fce-11ea-9313-3ad89e46bb14.png)
 
 
