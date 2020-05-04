@@ -4,7 +4,7 @@
 
 <!-- :wave:[Check out the deploy version](https://let-and-go.netlify.com/):wave: -->
 
-Genre Relations is a basically a social media/Music Wikipedia network where people can read, discuss, blog, like, share, add musical genres and everything about their influences. It has a great visual display of musical genres and their relations in a form of a manually created dynamic chart. This website is for all music fans and fanatics and it connects all people with the similar musical taste. 
+Genre Relations is a Social Media Network & Music Wikipedia where music lovers can read, discuss, like musical genres and everything about their influences. It has a great visual display of musical genres and their relations in a form of a manually created dynamic chart that users can interact with. This website is for all music fans and fanatics that want to connects with people with similar musical taste. 
 
 ## Table of contents
 
@@ -34,8 +34,9 @@ Genre Relations is a basically a social media/Music Wikipedia network where peop
 - [Material-UI](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/Genres/CheckboxesTags.js)
 - [Framer Motion](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/pageTransitions.js)
 - [SVG](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/Genres/RelationLine.js)
+- [JS Drag & Drop](https://github.com/zoranaism/portfolio-music-genres-client/blob/readme-update/src/pages/Genres/DraggingBoard.js)
 
-:star: _New technology learned during this project_
+<!-- :star: _New technology learned during this project_ -->
 
 ## Goals for this project
 
@@ -66,6 +67,9 @@ The goal of this project is to build a full-stack app using learned and new tech
 - As a User, I want to be able to see Artist's profile including genres they belong to.
 
 _This mvp is still a work in progress. Some features still need to be implemented and revised. If you have any suggestions, please let me know [here](https://www.linkedin.com/in/zoranaism/)_
+
+### UML
+![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
 
 ## Git workflow
 
