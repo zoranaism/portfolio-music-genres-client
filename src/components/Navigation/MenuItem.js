@@ -36,6 +36,7 @@ export default function MenuItem(props) {
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      className="nav-item"
     >
       <Link as={NavLink} to={props.path}>
         <div

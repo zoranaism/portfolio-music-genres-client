@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-nav {
+.main-navigation {
   position: absolute;
   top: 0;
   left: 0;
@@ -50,19 +50,19 @@ button.nav-button {
   outline: none;
 }
 
-ul,
-li {
+.nav-ul,
+.nav-item {
   margin: 0;
   padding: 0;
 }
 
-ul {
+.nav-ul {
   position: absolute;
   top: 100px;
   width: 130px;
 }
 
-li {
+.nav-item {
   list-style: none;
   padding: 15px 25px;
   display: flex;
@@ -71,12 +71,12 @@ li {
   text-align: center;
 }
 
-ul > li > a {
+.nav-ul > li > a {
   color: white;
 }
-ul > li > a:hover,
-ul > li > a:focus,
-ul > li > a:active {
+.nav-ul > li > a:hover,
+.nav-ul > li > a:focus,
+.nav-ul > li > a:active {
   color: white;
   text-decoration: none;
 }

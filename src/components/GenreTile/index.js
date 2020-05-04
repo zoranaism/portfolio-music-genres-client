@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GenreItem(props) {
-  console.log("props", props);
+  // console.log("props", props);
   
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);

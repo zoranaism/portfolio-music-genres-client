@@ -12,6 +12,8 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
+import Loading from "../../components/Loading"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     // textAlign: "center",
     top: "70px",
-    paddingTop: "30px",
+    padding: "30px 0",
   },
   title: {
     color: "white",
@@ -53,11 +55,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RelatedGenres({ genre, relations }) {
+export default function RelatedGenres({ genre, relations, otherRelations }) {
   const classes = useStyles();
-  if (relations === null) return <h6>Loading</h6>;
+  const concat = (...arrays) => [].concat(...arrays.filter(Array.isArray));
+  const allRelations = concat(relations, otherRelations)
 
-  console.log(relations);
+  console.log("allRelations", allRelations);
   
 
   return (
@@ -67,7 +70,7 @@ export default function RelatedGenres({ genre, relations }) {
           <Paper
             style={{
               position: "relative",
-              height: "320px",
+              height: "auto",
               width: "100%",
               marginBottom: "30px",
             }}
@@ -75,7 +78,7 @@ export default function RelatedGenres({ genre, relations }) {
             <Grid
               item
               xs={12}
-              style={{ position: "relative", height: "370px" }}
+              style={{ position: "relative", height: "auto" }}
             >
               <Box pb={1} pl={3} pt={2} pb={0}>
                 <Typography
@@ -92,27 +95,30 @@ export default function RelatedGenres({ genre, relations }) {
               </Box>
               <Divider />
               <GridList className={classes.gridList}>
-                {relations.map((relation) => (
+
+              {allRelations ? (allRelations.map((relation) => (
                   <GridListTile key={relation.id} style={{ width: "200px" }}>
-                    <img
-                      src="https://i.pinimg.com/originals/02/05/11/020511bede2858a41c5bb3b646337a68.png"
-                      alt=""
-                    />
+                    <img src={relation.img} alt={relation.name} />
 
                     <GridListTileBar
-                      title="Title"
+                      title={relation.name}
                       classes={{
                         root: classes.titleBar,
                         title: classes.title,
                       }}
                       actionIcon={
-                        <IconButton aria-label={`Title`}>
-                          <KeyboardArrowRightIcon className={classes.title} />
-                        </IconButton>
+                        <Link
+                          to={`/genres/${relation.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <IconButton aria-label={`Title`}>
+                            <KeyboardArrowRightIcon className={classes.title} />
+                          </IconButton>
+                        </Link>
                       }
                     ></GridListTileBar>
                   </GridListTile>
-                ))}
+                )) ) : (<Loading />)}
               </GridList>
             </Grid>
           </Paper>

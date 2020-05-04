@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: "30px",
     top: "80px",
+    zIndex: 100,
     "& > *": {
       margin: theme.spacing(1),
     },
@@ -35,13 +36,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ setSelected, selected }) {
+export default function Header({ setSelected, selected, genre }) {
   const classes = useStyles();
+  // console.log(genre);
 
   return (
     <div>
       <Grid container justify="center">
-        <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          style={{ textAlign: "center", position: "relative" }}
+        >
+          <div
+            style={{
+              background: `url(${genre.img})`,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              opacity: "0.1",
+              // backgroundRepeat: "repeat-x",
+              // backgroundPosition: "center",
+            }}
+          ></div>
           <div className={classes.menu}>
             <ToggleButton
               value="check"
@@ -63,12 +81,18 @@ export default function Header({ setSelected, selected }) {
           </div>
 
           <Box pt={10} mb={5}>
+            <img
+              src={genre.img}
+              alt={genre.name}
+              style={{ height: "150px", width: "150px" }}
+            />
             <Typography className={classes.header}>
-              Genre Name
+              {genre.name}
               <br />
             </Typography>
+
             <Typography variant="h6" gutterBottom>
-              <small>One line description about the genre</small>
+              <small>{genre.oneLineDescr}</small>
             </Typography>
           </Box>
         </Grid>
