@@ -18,23 +18,23 @@ Genre Relations is a basically a social media/Music Wikipadia network where peop
 ## App demo
 
 ![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/GenrePage.png)
-![let-go_Screenshot](https://user-images.githubusercontent.com/48523895/77710385-1f761580-6fce-11ea-9313-3ad89e46bb14.png)
+![music-genres-Screenshot2](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/MainPage.png)
+![music-genres-Screenshot3](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/ProfilePage.png)
 
 
 ## Technology used
 
 :eyes::point_down: **Click links to see samples in this project** :point_down::eyes:
 
-- [React](https://github.com/NicoleKuong/let-GO-client/blob/master/src/App.js)
-- [Redux](https://github.com/NicoleKuong/let-GO-client/tree/master/src/actions)
-- [Express](https://github.com/NicoleKuong/let-Go-server/blob/master/index.js)
-  - [REST API](https://github.com/NicoleKuong/let-Go-server/blob/master/item/router.js)
-- [Sequelize](https://github.com/NicoleKuong/let-Go-server/blob/master/user/model.js)
+- [React](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/App.js)
+- [Redux](https://github.com/zoranaism/portfolio-music-genres-client/tree/master/src/store)
+- [Express](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/index.js)
+  - [REST API](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/item/router.js)
+- [Sequelize](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/user/model.js)
 - Material-UI
-- Framer Motion
+- Framer Motion 
 - Font Awesome ?
 - SVG
-- 
 
 :star: _New technology learned during this project_
 
