@@ -2,7 +2,7 @@
 
 ## What this app is about
 
-<!-- :wave:[Check out the deploy version](https://let-and-go.netlify.com/):wave: -->
+[![:wave:Watch the Website Tour:wave:](https://prnt.sc/sdt9af)](https://youtu.be/uNgvKIWYTw4)
 
 Genre Relations is a basically a social media/Music Wikipadia network where people can read, disscuss, blog, like, share, add musical genres and everything about them. It has a great visual display of muscial genres and their relations in a form of a dynamic chart. This website if for all music fans and fanatics, because it connects all the people with similar musical taste. 
 
