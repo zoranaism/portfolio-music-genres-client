@@ -4,25 +4,25 @@
 
 <!-- :wave:[Check out the deploy version](https://let-and-go.netlify.com/):wave: -->
 
-Genre Relations is a Social Media Network & Music Wikipedia where music lovers can read, discuss, like musical genres and everything about their influences. It has a great visual display of musical genres and their relations in a form of a manually created dynamic chart that users can interact with. This website is for all music fans and fanatics that want to connects with people with similar musical taste. 
+Genre Relations is a Music Social Network & Music Wikipedia where music lovers can read and save favourite genres, hopefully some day expanded in a Music-Reddit-like Threads. It has a great visual display of musical genres and their relations in a form of a manually created dynamic board that users can interact with. This website is for all music fans and fanatics that want to connects with people with similar musical taste. 
 
 ## Table of contents
 
-- [App demo](#App-demo)
-- [Technology used](#technology-used)
-- [Goals for this project](#goals-for-this-project)
-- [User Stories and Wireframe](#user-stories-and-wireframe)
+- [App Demo](#App-demo)
+- [Technology](#technology-used)
+- [Project Goals](#goals-for-this-project)
+- [User Stories / Wireframes](#user-stories-and-wireframe)
 - [Git workflow](#git-workflow)
 - [Server-repo](#server-repo)
 
-## App demo
+## App Demo
 
 ![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/GenrePage.png)
 ![music-genres-Screenshot2](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/MainPage.png)
 ![music-genres-Screenshot3](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/ProfilePage.png)
 
 
-## Technology used
+## Technology
 
 :eyes::point_down: **Click links to see samples in this project** :point_down::eyes:
 
@@ -36,11 +36,9 @@ Genre Relations is a Social Media Network & Music Wikipedia where music lovers c
 - [SVG](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/Genres/RelationLine.js)
 - [JS Drag & Drop](https://github.com/zoranaism/portfolio-music-genres-client/blob/readme-update/src/pages/Genres/DraggingBoard.js)
 
-<!-- :star: _New technology learned during this project_ -->
+## Project Goals
 
-## Goals for this project
-
-The goal of this project is to build a full-stack app using learned and new technologies independently (see above). I learned new technologies by reading documentations and watching tutorial videos.
+The goal of this project is to build a full-stack app using learned and new technologies independently (see above). I learned new technologies by reading documentations, googling specific cases and watching tutorials.
 
 - practice full-stack development
 - practice learning new technology independently
@@ -48,28 +46,37 @@ The goal of this project is to build a full-stack app using learned and new tech
 - showcase development approach of using wireframes and user stories
 - practice disciplined [git usage](#git-workflow)
 
-## User Stories and Wireframe
+## User Stories / Wireframe / Task Management
 
 ### User stories for this project:
 
-- As a User, I want to be able to Login, SignUp and Logout.
-- As a User, I want to be able to see all the music genres and their relations.
-- As a User, I want to be able to see specific genre details on that Genre's Page.
-- As a User, I want to be able to add new genre.
-- As a User, I want to be able to see my profile with all relevant presonal information including liked genres.
+- As a User, I want to be able to _Login, SignUp and Logout_.
+- As a User, I want to be able to see _all the music genres on the board and their relations_.
+- As a User, I want to be able to see _specific genre details on that Genre's Page_.
+- As a User, I want to be able to _add new genre_.
+- As a User, I want to be able to _see my profile with all relevant presonal information including liked genres_.
 
 ### User stories to be added in the future:
 
-- As a User, I want to be able to declare as Admin.
-- As a User, I want to be able to make genre favourite.
-- As a User, I want to be able to see other Users profiles.
-- As a User, I want to be able to like musical genre. 
-- As a User, I want to be able to see Artist's profile including genres they belong to.
+- As a User, I want to be able to _declare as Admin_.
+- As a User, I want to be able to _see other Users profiles_.
+- As a User, I want to be able to _like musical genre_. 
+- As a User, I want to be able to _see all Artist's profile including genres they belong to_.
+- As a User, I want to be able to and _interact with other Users in a form of private messages_.
+- As a User, I want to be able to and _interact with other Users in a for of a Commenting_.
+- As a User, I want to be able to and _interact with other Users in a for of a Thread_.
 
-_This mvp is still a work in progress. Some features still need to be implemented and revised. If you have any suggestions, please let me know [here](https://www.linkedin.com/in/zoranaism/)_
+_This mvp is still a work in progress. Some features still need to be implemented and revised. If you have any suggestions or any Feedback so far, please let me know [here](https://www.linkedin.com/in/zoranaism/)_
 
 ### UML
+
+- Check my Self-Join Many-to-Many Database
 ![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
+
+### Task management
+
+- Check my Trello Project Page
+ ![Trello](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/Trello.png)
 
 ## Git workflow
 
