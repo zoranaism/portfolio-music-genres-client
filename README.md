@@ -71,11 +71,13 @@ _This mvp is still a work in progress. Some features still need to be implemente
 ### UML
 
 - Check my Self-Join Many-to-Many Database
-![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
+
+ ![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
 
 ### Task management
 
 - Check my Trello Project Page
+
  ![Trello](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/Trello.png)
 
 ## Git workflow
