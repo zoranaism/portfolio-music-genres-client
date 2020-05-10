@@ -2,6 +2,7 @@
 
 ## What this app is about
 
+_Click on the image to see a YouTube video walkthrough or [here](https://youtu.be/uNgvKIWYTw4)_
 [![:wave:Watch the Website Tour:wave:](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/VideoScreenshot.png)](https://youtu.be/uNgvKIWYTw4)
 
 Genre Relations is a Music Social Network & Music Wikipedia where music lovers can read and save favourite genres, hopefully some day expanded in a Music-Reddit-like Threads. It has a great visual display of musical genres and their relations in a form of a manually created dynamic board that users can interact with. This website is for all music fans and fanatics that want to connects with people with similar musical taste. 
