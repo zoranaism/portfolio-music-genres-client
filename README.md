@@ -2,45 +2,43 @@
 
 ## What this app is about
 
-[![:wave:Watch the Website Tour:wave:](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/VideoScreenshot.png)](https://youtu.be/uNgvKIWYTw4) 
+[![:wave:Watch the Website Tour:wave:](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/VideoScreenshot.png)](https://youtu.be/uNgvKIWYTw4)
 
-Genre Relations is a basically a social media/Music Wikipadia network where people can read, disscuss, blog, like, share, add musical genres and everything about them. It has a great visual display of muscial genres and their relations in a form of a dynamic chart. This website if for all music fans and fanatics, because it connects all the people with similar musical taste. 
+Genre Relations is a Music Social Network & Music Wikipedia where music lovers can read and save favourite genres, hopefully some day expanded in a Music-Reddit-like Threads. It has a great visual display of musical genres and their relations in a form of a manually created dynamic board that users can interact with. This website is for all music fans and fanatics that want to connects with people with similar musical taste. 
 
 ## Table of contents
 
-- [App demo](#App-demo)
-- [Technology used](#technology-used)
-- [Goals for this project](#goals-for-this-project)
-- [User Stories and Wireframe](#user-stories-and-wireframe)
+- [App Demo](#App-demo)
+- [Technology](#technology-used)
+- [Project Goals](#goals-for-this-project)
+- [User Stories / Wireframes](#user-stories-and-wireframe)
 - [Git workflow](#git-workflow)
 - [Server-repo](#server-repo)
 
-## App demo
+## App Demo
 
 ![music-genres-Screenshot1](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/GenrePage.png)
-![let-go_Screenshot](https://user-images.githubusercontent.com/48523895/77710385-1f761580-6fce-11ea-9313-3ad89e46bb14.png)
+![music-genres-Screenshot2](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/MainPage.png)
+![music-genres-Screenshot3](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/ProfilePage.png)
 
 
-## Technology used
+## Technology
 
 :eyes::point_down: **Click links to see samples in this project** :point_down::eyes:
 
-- [React](https://github.com/NicoleKuong/let-GO-client/blob/master/src/App.js)
-- [Redux](https://github.com/NicoleKuong/let-GO-client/tree/master/src/actions)
-- [Express](https://github.com/NicoleKuong/let-Go-server/blob/master/index.js)
-  - [REST API](https://github.com/NicoleKuong/let-Go-server/blob/master/item/router.js)
-- [Sequelize](https://github.com/NicoleKuong/let-Go-server/blob/master/user/model.js)
-- Material-UI
-- Framer Motion
-- Font Awesome ?
-- SVG
-- 
+- [React](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/App.js)
+- [Redux](https://github.com/zoranaism/portfolio-music-genres-client/tree/master/src/store)
+- [Express](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/index.js)
+  - [REST API](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/routers/genre.js)
+- [Sequelize](https://github.com/zoranaism/portfolio-music-genres-server/blob/master/models/genre.js)
+- [Material-UI](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/Genres/CheckboxesTags.js)
+- [Framer Motion](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/pageTransitions.js)
+- [SVG](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/pages/Genres/RelationLine.js)
+- [JS Drag & Drop](https://github.com/zoranaism/portfolio-music-genres-client/blob/readme-update/src/pages/Genres/DraggingBoard.js)
 
-:star: _New technology learned during this project_
+## Project Goals
 
-## Goals for this project
-
-The goal of this project is to build a full-stack app using new technologies (see above) _not taught in the bootcamp_. I learned these new tools by reading documentations and watching tutorial videos.
+The goal of this project is to build a full-stack app using learned and new technologies independently (see above). I learned new technologies by reading documentations, googling specific cases and watching tutorials.
 
 - practice full-stack development
 - practice learning new technology independently
@@ -48,23 +46,39 @@ The goal of this project is to build a full-stack app using new technologies (se
 - showcase development approach of using wireframes and user stories
 - practice disciplined [git usage](#git-workflow)
 
-## User Stories and Wireframe
+## User Stories / Wireframe / Task Management
 
 ### User stories for this project:
 
-- As a user, I would like to sign up and login. I must register before I can make an offer
-- As a user, I am able to create a profile to see my information and history of transactions
-- As a user, I would like to search for items at specific locations
-- As a user, I would like to see a dashboard. In this dashboard, I am able to see other users’ offers
-- As a user, I can click into a post on the dashboard and look at the details of the item
-- As a user, I would like to contact the item owner for meet up arrangements
-- As a user, I would like to make payments online for renting an item
+- As a User, I want to be able to _Login, SignUp and Logout_.
+- As a User, I want to be able to see _all the music genres on the board and their relations_.
+- As a User, I want to be able to see _specific genre details on that Genre's Page_.
+- As a User, I want to be able to _add new genre_.
+- As a User, I want to be able to _see my profile with all relevant presonal information including liked genres_.
 
-_This mvp is still a work in progress. Some features still need to be implemented and revised. If you have any suggestions, please let me know [here](https://www.linkedin.com/in/nicole-kuong/)_
+### User stories to be added in the future:
 
-### Wireframe
+- As a User, I want to be able to _declare as Admin_.
+- As a User, I want to be able to _see other Users profiles_.
+- As a User, I want to be able to _like musical genre_. 
+- As a User, I want to be able to _see all Artist's profile including genres they belong to_.
+- As a User, I want to be able to and _interact with other Users in a form of private messages_.
+- As a User, I want to be able to and _interact with other Users in a for of a Commenting_.
+- As a User, I want to be able to and _interact with other Users in a for of a Thread_.
 
-[Click here for the wireframes for this project in Mockflow](https://wireframepro.mockflow.com/editor.jsp?editor=off&perm=Owner&projectid=M942ed8396a84abfa15da1942fd72dc921583161154742&publicid=7653f18c4b5246a193328bc3cac7ca79#/page/550f39dc6adb49fc87e2187b51296e30)
+_This mvp is still a work in progress. Some features still need to be implemented and revised. If you have any suggestions or any Feedback so far, please let me know [here](https://www.linkedin.com/in/zoranaism/)_
+
+### UML
+
+- Check my Self-Join Many-to-Many Database
+
+ ![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
+
+### Task management
+
+- Check my Trello Project Page
+
+ ![Trello](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/Trello.png)
 
 ## Git workflow
 
@@ -76,9 +90,10 @@ In this project I try to use:
 
 #### 👀👇 Click links to view samples of pull requests 👇👀
 
-- [feat/payment page](https://github.com/NicoleKuong/let-GO-client/pull/9)
-- [Code Review](https://github.com/NicoleKuong/let-GO-client/pull/8)
+- [Home Page - Genres Board](https://github.com/zoranaism/portfolio-music-genres-client/pull/1)
+- [Single Genre Details Query](https://github.com/zoranaism/portfolio-music-genres-server/pull/4)
+- [Profile Query Updated](https://github.com/zoranaism/portfolio-music-genres-server/pull/6)
 
 ## Server-repo
 
-The server side of this project is an Express server connected to a Sequelize database. [Click here for more details](https://github.com/NicoleKuong/let-Go-server)
+The server side of this project is an Express server connected to a Sequelize database. [Click here for more details](https://github.com/zoranaism/portfolio-music-genres-server)
