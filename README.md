@@ -47,7 +47,7 @@ The goal of this project is to build a full-stack app using learned and new tech
 - showcase development approach of using wireframes and user stories
 - practice disciplined [git usage](#git-workflow)
 
-## User Stories / Wireframe / Task Management
+## User Stories / UML / Task Management
 
 ### User stories for this project:
 
@@ -73,23 +73,11 @@ _This mvp is still a work in progress. Some features still need to be implemente
 
 - Check my Database with Self-Join Many-to-Many (Genres)
 
-graph TD
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-
  ![UML](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/UML.png)
 
 ### Task management
 
-- Check my Trello Project Page
+- This is how I keep track of my tasks
 
  ![Trello](https://github.com/zoranaism/portfolio-music-genres-client/blob/master/src/Trello.png)
 
