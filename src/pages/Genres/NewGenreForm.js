@@ -17,9 +17,10 @@ export default function NewGenreForm({ genres }) {
   const [oneLineDescr, setOneLineDescr] = useState("");
   const [relations, setRelations] = useState([]);
   
+  // console.log("THE FORM INFO", name, img, oneLineDescr, relations);
+
   function submitForm(event) {
     event.preventDefault();
-    // console.log("IN A DISPATCH", name, img, oneLineDescr, relations);
     
     dispatch(createGenre(name, img, oneLineDescr, relations));
   }

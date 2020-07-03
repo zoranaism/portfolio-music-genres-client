@@ -29,6 +29,7 @@ export default function DraggingBoard(props) {
       if (tile.dragstate) {
         const dx = e.clientX - tile.dragstate.mouseDown.x;
         const dy = e.clientY - tile.dragstate.mouseDown.y;
+        // console.log("dragging", dx, dy);
 
         setTiles((t) => {
           return {
